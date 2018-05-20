@@ -2,11 +2,26 @@
 
 @section('content')
 
-<form id="insert-form" action="/test" method="POST">
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<form id="insert-form" action="/store" method="POST">
+  <label for="date_played">Date Played:</label>
+  <input type="date" class="form-control" name="date_played" value="{{$today}}" id="date_played">
+  <hr>
+  {{ csrf_field() }}
   <div class="rows">
     @include('game.insert_row')
   </div>
-<button type="submit">Save</button>
+<hr>
+<button class="btn btn-success btn btn-block"type="submit">Save</button>
 </form>
 
 

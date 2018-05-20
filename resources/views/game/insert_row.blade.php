@@ -1,43 +1,43 @@
     <div class="form-row">
       <div class="col">
-        <select class="form-control" placeholder="Starting Role">
+        <select class="form-control" name="players[start_role][]" placeholder="Starting Role">
           @foreach($roles as $id => $role)
             <option value="{{$id}}">{{$role}}</option>
           @endforeach
         </select>
       </div>
     <div class="col">
-        <select class="form-control" placeholder="Starting Faction">
+        <select class="form-control" name="players[start_faction][]" placeholder="Starting Faction">
           @foreach($factions as $id => $faction)
             <option value="{{$id}}">{{$faction}}</option>
           @endforeach
         </select>
       </div>
       <div class="col">
-        <select class="form-control" placeholder="Ending Role">
+        <select class="form-control" name="players[end_role][]" placeholder="Ending Role">
           @foreach($roles as $id => $role)
             <option value="{{$id}}">{{$role}}</option>
           @endforeach
         </select>
       </div>
     <div class="col">
-        <select class="form-control" placeholder="Ending Faction">
+        <select class="form-control" name="players[end_faction][]" placeholder="Ending Faction">
           @foreach($factions as $id => $faction)
             <option value="{{$id}}">{{$faction}}</option>
           @endforeach
         </select>
     </div>
     <div class="col">
-        <select id="survived" class="form-control">
-          <option selected>Survived</option>
-          <option>Killed!</option>
+        <select id="survived" name="players[survived][]" class="form-control">
+          <option value="1" selected>Survived</option>
+          <option value="0" >Killed</option>
         </select>
       </div>
 
       <div class="col">
-        <select id="victory" class="form-control">
-          <option selected>Won</option>
-          <option>Lost</option>
+        <select id="victory" name="players[victory][]" class="form-control">
+          <option value="1" selected>Won</option>
+          <option value="0">Lost</option>
         </select>
       </div>
       <div class="col"> 
