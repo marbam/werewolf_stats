@@ -45,7 +45,7 @@ class GameController extends Controller
             ]);
         }
 
-        return view('game.inserted');
+        return view('game.inserted', ['game' => $game]);
     }
 
     public function getDetails()

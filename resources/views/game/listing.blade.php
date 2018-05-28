@@ -18,7 +18,7 @@
 					<td>{{count($g->players)}}</td>
 					<td>{{count($g->players->where('victory', 1))}}</td>
 					<td>{{count($g->players->where('survived', 1))}}</td>
-					<td><a href="/show/{{$g->id}}">Show</a></td>				
+					<td><a href="/game/{{$g->id}}">Show</a></td>
 				</tr>
 			@endforeach
 		</tbody>
