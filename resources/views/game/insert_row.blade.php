@@ -1,27 +1,27 @@
     <div class="form-row">
       <div class="col">
-        <select class="form-control" name="players[start_role][]" placeholder="Starting Role">
+        <select class="form-control start_role" name="players[start_role][]" onchange="start_updated(this)" placeholder="Starting Role">
           @foreach($roles as $id => $role)
             <option value="{{$id}}">{{$role}}</option>
           @endforeach
         </select>
       </div>
     <div class="col">
-        <select class="form-control" name="players[start_faction][]" placeholder="Starting Faction">
+        <select class="form-control start_faction" name="players[start_faction][]" placeholder="Starting Faction">
           @foreach($factions as $id => $faction)
             <option value="{{$id}}">{{$faction}}</option>
           @endforeach
         </select>
       </div>
       <div class="col">
-        <select class="form-control" name="players[end_role][]" placeholder="Ending Role">
+        <select class="form-control end_role" name="players[end_role][]" placeholder="Ending Role">
           @foreach($roles as $id => $role)
             <option value="{{$id}}">{{$role}}</option>
           @endforeach
         </select>
       </div>
     <div class="col">
-        <select class="form-control" name="players[end_faction][]" placeholder="Ending Faction">
+        <select class="form-control end_faction" name="players[end_faction][]" placeholder="Ending Faction">
           @foreach($factions as $id => $faction)
             <option value="{{$id}}">{{$faction}}</option>
           @endforeach

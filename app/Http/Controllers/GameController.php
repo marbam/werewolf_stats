@@ -21,7 +21,7 @@ class GameController extends Controller
     public function append()
     {
         $data = $this->getDetails();
-    	return view('game.insert_row', ['roles' => $data['roles'], 'factions' => $data['factions']]);
+        return view('game.insert_row', ['roles' => $data['roles'], 'factions' => $data['factions']]);
     }
 
     public function store(Request $request)
@@ -46,7 +46,6 @@ class GameController extends Controller
         }
 
         return view('game.inserted');
-
     }
 
     public function getDetails()
@@ -54,5 +53,11 @@ class GameController extends Controller
         $data['roles'] = DB::table('roles')->pluck('role_name', 'id');
         $data['factions'] = DB::table('factions')->pluck('faction_name', 'id');
         return $data;
+    }
+
+    public function getFaction(Request $request)
+    {
+        $roles = DB::table('roles')->pluck('starting_faction', 'id');
+        return $roles[$request["role"]];
     }
 }

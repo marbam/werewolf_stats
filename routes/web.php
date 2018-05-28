@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::get('/insert', 'GameController@insert');
 Route::get('/append', 'GameController@append');
 Route::post('/store', 'GameController@store');
+Route::post('/factionAjax', 'GameController@getFaction');

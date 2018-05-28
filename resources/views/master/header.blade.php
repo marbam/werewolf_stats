@@ -10,6 +10,6 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     
-    <title>Hello, world!</title>
+    <title>Werewolf Analysis</title>
   </head>
   <body>

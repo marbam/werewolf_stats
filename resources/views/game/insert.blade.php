@@ -41,16 +41,37 @@ function add_row(test) {
 }
 
 
-function remove_row(test) {
+function remove_row(element) {
 
   var count = $('.form-row').length;
   if(count == 1) {
     alert("Can't remove only player")
   } else {
-    button = test;
+    button = element;
     row = button.closest('.form-row');
     row.remove();    
   }
+}
+
+function start_updated(element) {
+    var row = $(element.closest('.form-row'));
+    var role = element.value;
+    $.ajax({
+        url: '/factionAjax',
+        type: 'POST',
+        data: {
+                "role":   role,
+                "_token": "{{ csrf_token() }}"
+              },
+        success: function(data) {
+            row.find('.start_faction').val(data);
+            row.find('.end_role').val(role);
+            row.find('.end_faction').val(data);
+        },
+        error: function(data){
+            alert('something went wrong...');
+        }
+    });
 }
 
 $( document ).ready(function() {
