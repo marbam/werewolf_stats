@@ -14,7 +14,7 @@
         </select>
       </div>
       <div class="col">
-        <select class="form-control end_role" name="players[end_role][]" placeholder="Ending Role">
+        <select class="form-control end_role" name="players[end_role][]" onchange="end_updated(this)" placeholder="Ending Role">
           @foreach($roles as $id => $role)
             <option value="{{$id}}">{{$role}}</option>
           @endforeach

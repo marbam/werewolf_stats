@@ -74,6 +74,25 @@ function start_updated(element) {
     });
 }
 
+function end_updated(element) {
+    var row = $(element.closest('.form-row'));
+    var role = element.value;
+    $.ajax({
+        url: '/factionAjax',
+        type: 'POST',
+        data: {
+                "role":   role,
+                "_token": "{{ csrf_token() }}"
+              },
+        success: function(data) {
+            row.find('.end_faction').val(data);
+        },
+        error: function(data){
+            alert('something went wrong...');
+        }
+    });
+}
+
 $( document ).ready(function() {
 
 });
