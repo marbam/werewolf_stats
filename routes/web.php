@@ -21,3 +21,9 @@ Route::post('/store', 'GameController@store');
 Route::post('/factionAjax', 'GameController@getFaction');
 Route::get('/list', 'GameController@list');
 Route::get('/show/{game}', 'GameController@show');
+
+Route::get('/roles', 'RoleController@listing');
+Route::get('/roles/{role}', 'RoleController@show');
+
+Route::get('/factions', 'FactionController@listing');
+Route::get('/factions/{faction}', 'FactionController@show');

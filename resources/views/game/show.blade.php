@@ -73,10 +73,10 @@
         <tbody>
             @foreach($players as $p)
                 <tr>
-                    <td>{{$roles[$p->start_role]}}</td>
-                    <td>{{$factions[$p->start_faction]}}</td>
-                    <td>{{$roles[$p->end_role]}}</td>
-                    <td>{{$factions[$p->end_faction]}}</td>
+                    <td><a href="/roles/{{$p->start_role}}">{{$roles[$p->start_role]}}</a></td>
+                    <td><a href="/factions/{{$p->start_faction}}">{{$factions[$p->start_faction]}}</a></td>
+                    <td><a href="/roles/{{$p->end_role}}">{{$roles[$p->end_role]}}</a></td>
+                    <td><a href="/factions/{{$p->end_faction}}">{{$factions[$p->end_faction]}}</a></td>
                     <td>
                         @if($p->victory)
                             Won
