@@ -11,9 +11,14 @@ class Game extends Model
         'date_played',
     ];
 
-     protected $dates = [
+    protected $dates = [
         'date_played',
         'created_at',
         'updated_at',
     ];
+
+    public function players()
+    {
+        return $this->hasMany('App\Player', 'game_id', 'id');
+    }
 }

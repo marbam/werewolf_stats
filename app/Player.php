@@ -16,7 +16,7 @@ class Player extends Model
         'victory',
     ];
 
-     protected $dates = [
+    protected $dates = [
         'date_played',
         'created_at',
         'updated_at',

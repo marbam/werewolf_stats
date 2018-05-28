@@ -60,4 +60,19 @@ class GameController extends Controller
         $roles = DB::table('roles')->pluck('starting_faction', 'id');
         return $roles[$request["role"]];
     }
+
+    public function list()
+    {
+        $games = Game::with('players')->orderBy('date_played')->get();
+        return view('game.listing', ['games' => $games]);
+    }
+
+    public function show(Game $game)
+    {
+        $players = Player::where('game_id', $game->id)->get();
+        $role_factions = $this->getDetails();
+        $roles = $role_factions['roles'];
+        $factions = $role_factions['factions'];
+        return view('game.show', ['game' => $game, 'players' => $players, 'roles' => $roles, 'factions' => $factions]);
+    }
 }
