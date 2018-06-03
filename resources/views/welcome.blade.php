@@ -2,11 +2,94 @@
 
 @section('content')
 
+<style>
+.border-top { border-top: 1px solid #e5e5e5; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.flex-equal > * {
+  -ms-flex: 1;
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+.overflow-hidden { overflow: hidden; }
+
+.linkbox {
+    cursor: pointer;
+    padding-top: 1rem !important;
+}
+
+h1 {
+    text-align: center;
+    font-style: italic;
+}
+
+ion-icon {
+    font-size: 48px;
+}
+
+</style>
+
     <div class="jumbotron">
-      <h1 class="display-4">Landing Page</h1>
-      <p>1. <a href="/insert">Insert Game</a> </p>
-      <p>2. <a href="/list">Games listing</a> </p>
-      <p>3. <a href="/roles/">Analysis by role</a></p>
-      <p>4. <a href="/factions/">Analysis by faction</a></p>
+        <h1> Bristol Werewolf </h1>
     </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden linkbox" id="add">
+        <div class="my-3 py-3">
+          <ion-icon name="md-add"></ion-icon>
+          <h2 class="display-5">Add Game</h2>
+          <p class="lead">Add new data to the system</p>
+        </div>
+      </div>
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden linkbox" id="list">
+        <div class="my-3 p-3">
+          <ion-icon name="md-list"></ion-icon>
+          <h2 class="display-5">Games Listing</h2>
+          <p class="lead">View the games</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden linkbox" id="factions">
+        <div class="my-3 p-3">
+          <ion-icon name="md-contacts"></ion-icon>
+          <h2 class="display-5">Roles</h2>
+          <p class="lead">Analysis of Roles</p>
+        </div>
+      </div>
+      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden linkbox" id="roles">
+        <div class="my-3 py-3">
+          <ion-icon name="md-moon"></ion-icon>
+          <h2 class="display-5">Factions</h2>
+          <p class="lead">Analysis of Factions</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        $('#add').on('click', function() {
+            window.location.href = "/insert";
+        });
+
+        $('#list').on('click', function() {
+            window.location.href = "/list";
+        });
+
+        $('#roles').on('click', function() {
+            window.location.href = "/roles";
+        });
+
+        $('#factions').on('click', function() {
+            window.location.href = "/factions";
+        });
+    </script>
 @endsection
