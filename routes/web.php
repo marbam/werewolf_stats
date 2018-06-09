@@ -15,9 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/insert', 'GameController@insert');
-Route::get('/append', 'GameController@append');
-Route::post('/store', 'GameController@store');
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/insert', 'GameController@insert');
+    Route::get('/append', 'GameController@append');
+    Route::post('/store', 'GameController@store');
+});
+
+
 Route::post('/factionAjax', 'GameController@getFaction');
 Route::get('/list', 'GameController@list');
 Route::get('/game/{game}', 'GameController@show');
@@ -27,3 +32,8 @@ Route::get('/roles/{role}', 'RoleController@show');
 
 Route::get('/factions', 'FactionController@listing');
 Route::get('/factions/{faction}', 'FactionController@show');
+
+Auth::routes();
+Route::get('logout', '\App\Http\Controllers\HomeController@logout');
+
+// Route::get('/home', 'HomeController@index')->name('home');

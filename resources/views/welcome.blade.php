@@ -42,13 +42,23 @@ ion-icon {
     </div>
 
     <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden linkbox" id="add">
-        <div class="my-3 py-3">
-          <ion-icon name="md-add"></ion-icon>
-          <h2 class="display-5">Add Game</h2>
-          <p class="lead">Add new data to the system</p>
-        </div>
-      </div>
+      @if(Auth::check())
+          <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden linkbox" id="add">
+            <div class="my-3 py-3">
+              <ion-icon name="md-add"></ion-icon>
+              <h2 class="display-5">Add Game</h2>
+              <p class="lead">Add new data to the system</p>
+            </div>
+          </div>
+      @else
+        <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden linkbox" id="login">
+            <div class="my-3 py-3">
+              <ion-icon name="log-in"></ion-icon>
+              <h2 class="display-5">Login</h2>
+              <p class="lead">Login to the system</p>
+            </div>
+          </div>
+      @endif
       <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden linkbox" id="list">
         <div class="my-3 p-3">
           <ion-icon name="md-list"></ion-icon>
@@ -76,6 +86,11 @@ ion-icon {
     </div>
 
     <script>
+
+        $('#login').on('click', function() {
+            window.location.href = "/insert";
+        });
+
         $('#add').on('click', function() {
             window.location.href = "/insert";
         });

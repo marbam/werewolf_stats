@@ -5,6 +5,11 @@
     <a class="py-2 d-none d-md-inline-block" href="/list">List Games</a>
     <a class="py-2 d-none d-md-inline-block" href="/roles">Review: Roles</a>
     <a class="py-2 d-none d-md-inline-block" href="/factions">Review: Factions</a>
+    @if(Auth::check())
+      <a class="py-2 d-none d-md-inline-block" href="/logout">Logout</a>
+    @else
+      <a class="py-2 d-none d-md-inline-block" href="/login">Login</a>
+    @endif
   </div>
 </nav>
 
