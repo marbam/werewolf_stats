@@ -20,6 +20,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/insert', 'GameController@insert');
     Route::get('/append', 'GameController@append');
     Route::post('/store', 'GameController@store');
+
+    Route::get('/users', 'UserController@listing');
+    Route::post('/approve_user', 'UserController@approve');
+    Route::post('/revoke_user', 'UserController@revoke');
+    Route::post('/delete_user', 'UserController@delete');
 });
 
 
