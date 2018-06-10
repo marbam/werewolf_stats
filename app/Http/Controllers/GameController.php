@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Response;
 use \App\Game;
 use Carbon\Carbon;
 use \App\Player;
@@ -26,7 +27,6 @@ class GameController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate(['date_played' => 'required']);
         $game = Game::create(['date_played' => $request['date_played']]);
 
@@ -74,5 +74,77 @@ class GameController extends Controller
         $roles = $role_factions['roles'];
         $factions = $role_factions['factions'];
         return view('game.show', ['game' => $game, 'players' => $players, 'roles' => $roles, 'factions' => $factions]);
+    }
+
+    public function export()
+    {
+        $games = Game::with(['players'])->get();
+
+        $output = '';
+        foreach ($games as $game) {
+            $output.= "Game,".$game->date_played."\n";
+            foreach ($game->players as $player) {
+                $output.=   "Player,".
+                            $game->id.','.
+                            $player->start_role.','.
+                            $player->start_faction.','.
+                            $player->end_role.','.
+                            $player->end_faction.','.
+                            $player->survived.','.
+                            $player->victory.
+                            "\n";
+            }
+        }
+
+        $headers = array(
+          'Content-Type' => 'text/csv',
+          'Content-Disposition' => 'attachment; filename="werewolf_games_export_'.date("Y-m-d-H-i-s").'.csv"',
+        );
+
+        return Response::make($output, 200, $headers);
+    }
+
+    public function import()
+    {
+        return view('game.import');
+    }
+
+    public function processImport(Request $request)
+    {
+        Game::truncate();
+        Player::truncate();
+
+        $file = public_path('/import.csv');
+        if (!file_exists($file) || !is_readable($file)) {
+            dd("File not present or invalid");
+        }
+
+        $data = array();
+        if (($handle = fopen($file, 'r')) !== false) {
+            while (($row = fgetcsv($handle, 1000, ',')) !== false) {
+                $data[] = $row;
+            }
+            fclose($handle);
+        }
+
+        $game_id = '';
+        foreach ($data as $csv_row) {
+            if ($csv_row[0] == "Game") {
+                $game = Game::create(['date_played' => $csv_row[1]]);
+                $game_id = $game->id;
+            } else { // player
+                Player::create([
+                    'game_id' => $game_id,
+                    'start_role' => $csv_row[2],
+                    'start_faction' => $csv_row[3],
+                    'end_role' => $csv_row[4],
+                    'end_faction' => $csv_row[5],
+                    'survived' => $csv_row[6],
+                    'victory' => $csv_row[7]
+                ]);
+            }
+        }
+
+        return redirect('/list');
     }
 }

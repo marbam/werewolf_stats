@@ -3,6 +3,9 @@
 @section('content')
 
 @if($games->isNotEmpty())
+    @if(Auth::check())
+		<button class="btn btn-dark" id="export_games" style="float:right">Export Games</button>
+	@endif
 	<table class="table">
 		<thead>
 			<th> Date Played </th>
@@ -25,6 +28,20 @@
 	</table>
 @else
 	No games
+    @if(Auth::check())
+		<button class="btn btn-dark" id="import_games" style="float:right">Import Games</button>
+	@endif
 @endif
+
+<script>
+	$('#export_games').on('click', function() {
+		window.location.href = "/export_games";
+	})
+
+	$('#import_games').on('click', function() {
+		window.location.href = "/game/import";
+	});
+</script>
+
 
 @endsection

@@ -25,6 +25,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/approve_user', 'UserController@approve');
     Route::post('/revoke_user', 'UserController@revoke');
     Route::post('/delete_user', 'UserController@delete');
+
+    Route::get('/export_games', 'GameController@export');
+    Route::get('/game/import', 'GameController@import');
+    Route::get('/game/import_start', 'GameController@processImport');
 });
 
 

@@ -67,6 +67,8 @@ class GamesTableSeeder extends Seeder
 
         $game = App\Game::create(['date_played' => $now]);
 
+        $players = array();
+
         $players[] = ['game_id' => $game->id,
                       'start_role' => 1,
                       'start_faction' => 1,
