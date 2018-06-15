@@ -69,14 +69,14 @@ ion-icon {
     </div>
 
     <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden linkbox" id="factions">
+      <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden linkbox" id="roles">
         <div class="my-3 p-3">
           <ion-icon name="md-person"></ion-icon>
           <h2 class="display-5">Roles</h2>
           <p class="lead">Analysis of Roles</p>
         </div>
       </div>
-      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden linkbox" id="roles">
+      <div class="bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden linkbox" id="factions">
         <div class="my-3 py-3">
           <ion-icon name="md-moon"></ion-icon>
           <h2 class="display-5">Factions</h2>

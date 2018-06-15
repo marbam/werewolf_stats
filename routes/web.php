@@ -37,7 +37,7 @@ Route::get('/list', 'GameController@list');
 Route::get('/game/{game}', 'GameController@show');
 
 Route::get('/roles', 'RoleController@listing');
-Route::get('/roles/{role}', 'RoleController@show');
+Route::get('/roles/{id}', 'RoleController@show');
 
 Route::get('/factions', 'FactionController@listing');
 Route::get('/factions/{faction}', 'FactionController@show');

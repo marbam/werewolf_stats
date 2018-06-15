@@ -21,4 +21,9 @@ class Player extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function game()
+    {
+        return $this->hasOne('App\Game', 'id', 'game_id');
+    }
 }

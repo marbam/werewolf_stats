@@ -12,4 +12,9 @@ class Role extends Model
         'mystic',
         'corrupt',
     ];
+
+    public function players()
+    {
+        return $this->hasMany('App\Player', 'start_role', 'id');
+    }
 }
