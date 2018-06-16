@@ -90,7 +90,7 @@
             <td><div id="survival_div"></div></td>
         </tr>
     </table>
-<h4></h4>
+<h4>Stats by Game:</h4>
     <table class="table">
         <thead>
             <th> Game Date</th>

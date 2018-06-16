@@ -25,8 +25,7 @@ class RoleController extends Controller
                         'games.id',
                         'games.date_played',
                         'survived',
-                        'victory',
-                        'role_name'
+                        'victory'
                      ]);
 
         $role_name = Role::where('id', $id)->first()->role_name;
