@@ -157,7 +157,7 @@ class GamesTableSeeder extends Seeder
                       'end_role' => 10,
                       'end_faction' => 1,
                       'survived' => 1,
-                      'victory' => 10
+                      'victory' => 1
                     ];
 
         $players[] = ['game_id' => $game->id,
