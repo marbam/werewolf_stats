@@ -4,8 +4,6 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
      google.charts.load('current', {'packages':['corechart', 'bar']});
-      // google.charts.setOnLoadCallback(drawWinnersChart);
-      // google.charts.setOnLoadCallback(drawSurvivalChart);
       google.charts.setOnLoadCallback(drawPlayedCumulativeChart);
       google.charts.setOnLoadCallback(drawPlayedByWeekChart);
       google.charts.setOnLoadCallback(drawVictoryLossPie);
@@ -50,7 +48,7 @@
           height: 500,
           legend: { position: 'none' },
           chart: { title: 'Occurance by date'},
-          bars: 'vertical', // Required for Material Bar Charts.
+          bars: 'vertical',
         };
 
         var chart = new google.charts.Bar(document.getElementById('played_by_week_chart'));
@@ -94,7 +92,7 @@
           height: 500,
           legend: { position: 'none' },
           chart: { title: 'Wins by date'},
-          bars: 'vertical', // Required for Material Bar Charts.
+          bars: 'vertical',
         };
 
         var chart = new google.charts.Bar(document.getElementById('winner_line'));
@@ -117,7 +115,7 @@
           height: 500,
           legend: { position: 'none' },
           chart: { title: 'Losses by date'},
-          bars: 'vertical', // Required for Material Bar Charts.
+          bars: 'vertical',
         };
 
         var chart = new google.charts.Bar(document.getElementById('loser_line'));
@@ -134,8 +132,6 @@
         <tr>
           <td><div id="played_cumulative_chart"></div></td>
           <td><div id="played_by_week_chart"></div></td>
-            {{-- <td><div id="winners_div"></div></td> --}}
-            {{-- <td><div id="survival_div"></div></td> --}}
         </tr>
     </table>
 
@@ -144,42 +140,6 @@
             <td><div id="winner_pie"></div></td>
             <td><div id="winner_line"></div></td>
             <td><div id="loser_line"></div></td>
-            {{-- <td><div id="survival_div"></div></td> --}}
         </tr>
     </table>
-
-
-
-
-<h4></h4>
-{{--     <table class="table">
-        <thead>
-            <th> Game Date</th>
-            <th> Victory? </th>
-            <th> Survival? </th>
-            <th> Link </th>
-        </thead>
-        <tbody>
-            @foreach($games as $g)
-                <tr>
-                    <td>{{$g->date_played->format('d/m/Y')}}</td>
-                    <td>
-                        @if($g->victory)
-                            Won
-                        @else
-                            Lost
-                        @endif
-                    </td>
-                    <td>
-                        @if($g->survived)
-                            Survived
-                        @else
-                            Killed
-                        @endif
-                    </td>
-                    <td><a href="/game/{{$g->id}}">Show</a></td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table> --}}
 @endsection
