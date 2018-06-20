@@ -92,9 +92,5 @@ function end_updated(element) {
         }
     });
 }
-
-$( document ).ready(function() {
-
-});
 </script>
 @endsection

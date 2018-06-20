@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/export_games', 'GameController@export');
     Route::get('/game/import', 'GameController@import');
     Route::get('/game/import_start', 'GameController@processImport');
+    Route::post('/delete_player', 'GameController@deletePlayer');
+    Route::post('/edit_player', 'GameController@editPlayer');
 });
 
 

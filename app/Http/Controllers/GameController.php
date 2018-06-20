@@ -76,6 +76,39 @@ class GameController extends Controller
         return view('game.show', ['game' => $game, 'players' => $players, 'roles' => $roles, 'factions' => $factions]);
     }
 
+    public function deletePlayer(Request $request)
+    {
+        $player = Player::where('id', $request->player_id)->first();
+        $game_id = $player->game_id;
+        $deleted = $player->delete();
+        if ($deleted) {
+            $player_count = Player::where('game_id', $game_id)->count();
+            if ($player_count) {
+                return "deleted";
+            } else {
+                Game::where('id', $game_id)->delete();
+                return "last_one";
+            }
+        }
+    }
+
+    public function editPlayer(Request $request)
+    {
+        $r = $request->all();
+        $player = Player::where('id', $r['id'])->first();
+        $player->start_role = $r['start_role'];
+        $player->start_faction = $r['start_faction'];
+        $player->end_role = $r['end_role'];
+        $player->end_faction = $r['end_faction'];
+        $player->survived = $r['survived'];
+        $player->victory = $r['victory'];
+        $updated = $player->save();
+        if ($updated) {
+            return "updated";
+        }
+        return "failed";
+    }
+
     public function export()
     {
         $games = Game::with(['players'])->get();
