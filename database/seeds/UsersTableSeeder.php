@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'Approved User',
-            'email' => env('APPROVED_EMAIL'),
+            'email' => env('APPROVED_EMAIL'),   
             'password' => bcrypt(env('APPROVED_PASSWORD')),
             'approved' => 1
         ]);
