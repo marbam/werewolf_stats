@@ -13,22 +13,22 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Admin User',
-            'email' => 'ww_admin@gmail.com',
-            'password' => bcrypt('werewolfadmin'),
+            'email' => env('ADMIN_EMAIL'),
+            'password' => bcrypt(env('ADMIN_PASSWORD')),
             'approved' => 1
         ]);
 
         DB::table('users')->insert([
             'name' => 'Approved User',
-            'email' => 'ww_approved@gmail.com',
-            'password' => bcrypt('werewolfadmin'),
+            'email' => env('APPROVED_EMAIL'),
+            'password' => bcrypt(env('APPROVED_PASSWORD')),
             'approved' => 1
         ]);
 
         DB::table('users')->insert([
             'name' => 'Unapproved User',
-            'email' => 'ww_unapproved@gmail.com',
-            'password' => bcrypt('werewolfadmin'),
+            'email' => env('UNAPPROVED_EMAIL'),
+            'password' => bcrypt(env('UNAPPROVED_PASSWORD')),
             'approved' => 0
         ]);
     }

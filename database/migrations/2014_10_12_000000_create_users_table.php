@@ -13,6 +13,29 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        $toCheck = [ 
+            'ADMIN_EMAIL' => 'Email for admin',
+            'ADMIN_PASSWORD' => 'Password for admin',
+            'APPROVED_EMAIL' => 'Email for an approved user',
+            'APPROVED_PASSWORD' => 'Password for approved_user',
+            'UNAPPROVED_EMAIL' => 'Email for an unapproved user',
+            'UNAPPROVED_PASSWORD' => 'Password for an unpproved user'
+        ];
+
+        $missing = [];
+        foreach($toCheck as $variable => $description) {
+            if (is_null(env($variable))) {
+                $missing[$variable] = $description;
+            }
+        }
+
+        if(!empty($missing)) {
+            foreach ($missing as $key => $desc) {
+                echo "Please populate ENV Variable '".$key."' (".$desc.")\n";
+            }
+            die();
+        }
+
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
